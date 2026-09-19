@@ -72,11 +72,7 @@ function createWebSocketServer(
     new WebSocket.Server({
       server,
 
-      path:
-        "/ws",
-
-      maxPayload:
-        MAX_MESSAGE_SIZE,
+      maxPayload: 256 * 1024,
     });
 
 
