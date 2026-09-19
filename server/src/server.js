@@ -1,13 +1,17 @@
-﻿const http = require("http");
+﻿const { createServer } = require("http");
 
 const app = require("./app");
 const config = require("./config/env");
 const { createWebSocketServer } = require("./websocket/websocket.server");
 
-const server = http.createServer(app);
+const server = createServer(app);
 
+// WebSocket partagé avec le serveur HTTP.
+// Vercel utilise ce serveur pour gérer l'upgrade /ws.
 createWebSocketServer(server);
 
+// En local uniquement : le serveur écoute sur le port 3000.
+// Vercel utilise l'export du serveur.
 if (require.main === module) {
   server.listen(config.port, () => {
     console.log(`HTTP server running on http://localhost:${config.port}`);
