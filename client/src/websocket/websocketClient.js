@@ -1,4 +1,4 @@
-const WS_URL = "ws://localhost:3000/ws";
+﻿import { WS_URL } from "../services/apiConfig.js";
 
 export class WebSocketClient {
   constructor(token) {
@@ -23,7 +23,7 @@ export class WebSocketClient {
         "open",
         () => {
           console.log(
-            "WebSocket connecté"
+            "WebSocket connectÃ©"
           );
 
           if (this.onOpen) {
@@ -52,7 +52,7 @@ export class WebSocketClient {
           }
 
           console.log(
-            "WebSocket message reçu:",
+            "WebSocket message reÃ§u:",
             message
           );
 
@@ -66,7 +66,7 @@ export class WebSocketClient {
         "close",
         (event) => {
           console.log(
-            "WebSocket fermé:",
+            "WebSocket fermÃ©:",
             event.code
           );
 

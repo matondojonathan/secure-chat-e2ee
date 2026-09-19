@@ -1,4 +1,4 @@
-const express =
+﻿const express =
   require("express");
 
 const cors =
@@ -47,8 +47,7 @@ app.use(
 
 app.use(
   cors({
-    origin:
-      "http://localhost:5173",
+    origin: process.env.CORS_ORIGIN || "http://localhost:5173",
 
     methods: [
       "GET",
@@ -76,7 +75,7 @@ app.use(
 
 
 /*
- * Protection générale contre
+ * Protection gÃ©nÃ©rale contre
  * les appels excessifs.
  */
 const generalLimiter =
@@ -98,7 +97,7 @@ const generalLimiter =
         "error",
 
       message:
-        "Trop de requêtes. Réessaie plus tard.",
+        "Trop de requÃªtes. RÃ©essaie plus tard.",
     },
   });
 
@@ -109,7 +108,7 @@ app.use(
 
 
 /*
- * Protection renforcée de
+ * Protection renforcÃ©e de
  * l'authentification.
  */
 const authLimiter =
@@ -131,7 +130,7 @@ const authLimiter =
         "error",
 
       message:
-        "Trop de tentatives d'authentification. Réessaie plus tard.",
+        "Trop de tentatives d'authentification. RÃ©essaie plus tard.",
     },
   });
 
@@ -188,8 +187,8 @@ app.use(
 
 
 /*
- * Le rate limiting général
- * protège déjà cette route.
+ * Le rate limiting gÃ©nÃ©ral
+ * protÃ¨ge dÃ©jÃ  cette route.
  */
 app.use(
   "/api/password-reset",

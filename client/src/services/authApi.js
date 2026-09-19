@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+﻿import { API_URL } from "./apiConfig.js";
 
 async function parseResponse(response) {
   let data;
@@ -6,7 +6,7 @@ async function parseResponse(response) {
   try {
     data = await response.json();
   } catch (error) {
-    throw new Error("Réponse serveur invalide");
+    throw new Error("RÃ©ponse serveur invalide");
   }
 
   if (!response.ok) {

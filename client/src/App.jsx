@@ -1,11 +1,9 @@
-import {
+﻿import {
   useEffect,
   useState,
 } from "react";
 
-import {
-  login,
-} from "./services/authApi.js";
+import { login } from "./services/authApi.js";`r`n`r`nimport { API_URL } from "./services/apiConfig.js";
 
 import {
   getUsers,
@@ -151,7 +149,7 @@ function App() {
     status,
     setStatus,
   ] = useState(
-    "Non connecté"
+    "Non connectÃ©"
   );
 
   const [
@@ -415,7 +413,7 @@ function App() {
 
 
             setStatus(
-              `Session E2EE restaurée avec ${recipient.username}`
+              `Session E2EE restaurÃ©e avec ${recipient.username}`
             );
 
           } catch (historyError) {
@@ -426,14 +424,14 @@ function App() {
 
 
             setStatus(
-              `Connecté avec ${recipient.username}`
+              `ConnectÃ© avec ${recipient.username}`
             );
           }
         }
 
       } else {
         setStatus(
-          "Connecté — choisis un destinataire"
+          "ConnectÃ© â€” choisis un destinataire"
         );
       }
 
@@ -448,7 +446,7 @@ function App() {
 
 
       setStatus(
-        "Session expirée — reconnexion nécessaire"
+        "Session expirÃ©e â€” reconnexion nÃ©cessaire"
       );
 
     } finally {
@@ -493,7 +491,7 @@ function App() {
 
 
       setStatus(
-        "Connecté — choisis un destinataire"
+        "ConnectÃ© â€” choisis un destinataire"
       );
 
     } catch (err) {
@@ -509,7 +507,7 @@ function App() {
 
 
       setStatus(
-        "Échec de connexion"
+        "Ã‰chec de connexion"
       );
     }
   }
@@ -540,7 +538,7 @@ function App() {
       8
     ) {
       setError(
-        "Le mot de passe doit contenir au moins 8 caractères."
+        "Le mot de passe doit contenir au moins 8 caractÃ¨res."
       );
 
       return;
@@ -548,14 +546,14 @@ function App() {
 
 
     setStatus(
-      "Création du compte..."
+      "CrÃ©ation du compte..."
     );
 
 
     try {
       const response =
         await fetch(
-          "http://localhost:3000/api/auth/register",
+          `${API_URL}/api/auth/register`,
           {
             method:
               "POST",
@@ -584,7 +582,7 @@ function App() {
       if (!response.ok) {
         throw new Error(
           data.message ||
-          "Impossible de créer le compte."
+          "Impossible de crÃ©er le compte."
         );
       }
 
@@ -605,7 +603,7 @@ function App() {
 
 
       setSuccess(
-        "Compte créé avec succès. Tu peux maintenant te connecter."
+        "Compte crÃ©Ã© avec succÃ¨s. Tu peux maintenant te connecter."
       );
 
 
@@ -615,7 +613,7 @@ function App() {
 
 
       setStatus(
-        "Compte créé"
+        "Compte crÃ©Ã©"
       );
 
     } catch (err) {
@@ -626,12 +624,12 @@ function App() {
 
       setError(
         err.message ||
-        "Erreur lors de la création du compte."
+        "Erreur lors de la crÃ©ation du compte."
       );
 
 
       setStatus(
-        "Création du compte impossible"
+        "CrÃ©ation du compte impossible"
       );
     }
   }
@@ -656,7 +654,7 @@ function App() {
 
     try {
       setStatus(
-        "Préparation de la réinitialisation..."
+        "PrÃ©paration de la rÃ©initialisation..."
       );
 
 
@@ -670,7 +668,7 @@ function App() {
        * TP LOCAL UNIQUEMENT.
        *
        * Le serveur peut fournir devToken
-       * pour permettre la démonstration
+       * pour permettre la dÃ©monstration
        * sans SMTP.
        */
       if (result.devToken) {
@@ -683,7 +681,7 @@ function App() {
         );
 
         setSuccess(
-          "Token de développement généré. Tu peux définir un nouveau mot de passe."
+          "Token de dÃ©veloppement gÃ©nÃ©rÃ©. Tu peux dÃ©finir un nouveau mot de passe."
         );
 
       } else {
@@ -694,7 +692,7 @@ function App() {
 
 
       setStatus(
-        "Demande de réinitialisation traitée"
+        "Demande de rÃ©initialisation traitÃ©e"
       );
 
     } catch (err) {
@@ -704,7 +702,7 @@ function App() {
 
       setError(
         err.message ||
-        "Impossible de demander la réinitialisation."
+        "Impossible de demander la rÃ©initialisation."
       );
     }
   }
@@ -723,7 +721,7 @@ function App() {
       8
     ) {
       setError(
-        "Le nouveau mot de passe doit contenir au moins 8 caractères."
+        "Le nouveau mot de passe doit contenir au moins 8 caractÃ¨res."
       );
 
       return;
@@ -744,7 +742,7 @@ function App() {
 
     if (!resetToken) {
       setError(
-        "Le token de réinitialisation est requis."
+        "Le token de rÃ©initialisation est requis."
       );
 
       return;
@@ -753,7 +751,7 @@ function App() {
 
     try {
       setStatus(
-        "Réinitialisation du mot de passe..."
+        "RÃ©initialisation du mot de passe..."
       );
 
 
@@ -788,12 +786,12 @@ function App() {
 
 
       setSuccess(
-        "Mot de passe réinitialisé avec succès. Tu peux maintenant te connecter."
+        "Mot de passe rÃ©initialisÃ© avec succÃ¨s. Tu peux maintenant te connecter."
       );
 
 
       setStatus(
-        "Mot de passe réinitialisé"
+        "Mot de passe rÃ©initialisÃ©"
       );
 
     } catch (err) {
@@ -804,7 +802,7 @@ function App() {
 
       setError(
         err.message ||
-        "Impossible de réinitialiser le mot de passe."
+        "Impossible de rÃ©initialiser le mot de passe."
       );
     }
   }
@@ -822,7 +820,7 @@ function App() {
 
     if (!selectedUserId) {
       setError(
-        "Sélectionne un destinataire."
+        "SÃ©lectionne un destinataire."
       );
 
       return;
@@ -834,7 +832,7 @@ function App() {
 
 
       setStatus(
-        "Création ou récupération de la conversation..."
+        "CrÃ©ation ou rÃ©cupÃ©ration de la conversation..."
       );
 
 
@@ -861,7 +859,7 @@ function App() {
 
 
       setStatus(
-        "Préparation du chiffrement..."
+        "PrÃ©paration du chiffrement..."
       );
 
 
@@ -922,12 +920,12 @@ function App() {
 
       setError(
         err.message ||
-        "Impossible de préparer la session E2EE."
+        "Impossible de prÃ©parer la session E2EE."
       );
 
 
       setStatus(
-        "Préparation E2EE impossible"
+        "PrÃ©paration E2EE impossible"
       );
     }
   }
@@ -939,7 +937,7 @@ function App() {
       !e2eeReady
     ) {
       setError(
-        "La session E2EE n'est pas prête."
+        "La session E2EE n'est pas prÃªte."
       );
 
       return;
@@ -1000,7 +998,7 @@ function App() {
 
 
       setStatus(
-        "Message chiffré envoyé"
+        "Message chiffrÃ© envoyÃ©"
       );
 
     } catch (err) {
@@ -1086,7 +1084,7 @@ function App() {
 
 
     setStatus(
-      "Déconnecté volontairement"
+      "DÃ©connectÃ© volontairement"
     );
   }
 
@@ -1136,7 +1134,7 @@ function App() {
           </h1>
 
           <p>
-            Restauration de la session sécurisée...
+            Restauration de la session sÃ©curisÃ©e...
           </p>
 
         </div>
@@ -1158,7 +1156,7 @@ function App() {
             </h1>
 
             <p>
-              Messagerie web chiffrée de bout en bout
+              Messagerie web chiffrÃ©e de bout en bout
             </p>
 
           </div>
@@ -1198,7 +1196,7 @@ function App() {
                   openRegister
                 }
               >
-                Créer un compte
+                CrÃ©er un compte
               </button>
 
             </div>
@@ -1215,7 +1213,7 @@ function App() {
                   </h2>
 
                   <p className="auth-description">
-                    Accède à ta messagerie sécurisée.
+                    AccÃ¨de Ã  ta messagerie sÃ©curisÃ©e.
                   </p>
 
 
@@ -1307,7 +1305,7 @@ function App() {
                         openReset
                       }
                     >
-                      Mot de passe oublié ?
+                      Mot de passe oubliÃ© ?
                     </button>
 
 
@@ -1326,11 +1324,11 @@ function App() {
                 <section className="auth-panel">
 
                   <h2>
-                    Créer un compte
+                    CrÃ©er un compte
                   </h2>
 
                   <p className="auth-description">
-                    Crée ton compte Secure Chat.
+                    CrÃ©e ton compte Secure Chat.
                   </p>
 
 
@@ -1415,7 +1413,7 @@ function App() {
                               event.target.value
                             )
                           }
-                          placeholder="8 caractères minimum"
+                          placeholder="8 caractÃ¨res minimum"
                           minLength={8}
                           maxLength={128}
                           required
@@ -1463,7 +1461,7 @@ function App() {
                               event.target.value
                             )
                           }
-                          placeholder="Répéter le mot de passe"
+                          placeholder="RÃ©pÃ©ter le mot de passe"
                           minLength={8}
                           maxLength={128}
                           required
@@ -1491,7 +1489,7 @@ function App() {
                       className="primary-button"
                       type="submit"
                     >
-                      Créer mon compte
+                      CrÃ©er mon compte
                     </button>
 
                   </form>
@@ -1508,12 +1506,12 @@ function App() {
 
                   <>
                     <h2>
-                      Mot de passe oublié
+                      Mot de passe oubliÃ©
                     </h2>
 
                     <p className="auth-description">
                       Indique ton adresse e-mail
-                      pour préparer la réinitialisation.
+                      pour prÃ©parer la rÃ©initialisation.
                     </p>
 
 
@@ -1565,8 +1563,8 @@ function App() {
                     </h2>
 
                     <p className="auth-description">
-                      Utilise le token généré
-                      pour définir ton nouveau mot de passe.
+                      Utilise le token gÃ©nÃ©rÃ©
+                      pour dÃ©finir ton nouveau mot de passe.
                     </p>
 
 
@@ -1579,7 +1577,7 @@ function App() {
                       <div className="form-group">
 
                         <label className="form-label">
-                          Token de réinitialisation
+                          Token de rÃ©initialisation
                         </label>
 
                         <input
@@ -1653,7 +1651,7 @@ function App() {
                         className="primary-button"
                         type="submit"
                       >
-                        Réinitialiser le mot de passe
+                        RÃ©initialiser le mot de passe
                       </button>
 
                     </form>
@@ -1668,7 +1666,7 @@ function App() {
                     openLogin
                   }
                 >
-                  Retour à la connexion
+                  Retour Ã  la connexion
                 </button>
 
               </section>
@@ -1680,7 +1678,7 @@ function App() {
 
 
           {status !==
-            "Non connecté" && (
+            "Non connectÃ©" && (
             <div className="status">
 
               <strong>
@@ -1708,8 +1706,8 @@ function App() {
 
 
           <p className="auth-security">
-            Les clés privées E2EE restent dans le navigateur
-            et ne sont jamais envoyées au serveur.
+            Les clÃ©s privÃ©es E2EE restent dans le navigateur
+            et ne sont jamais envoyÃ©es au serveur.
           </p>
 
         </div>
@@ -1732,7 +1730,7 @@ function App() {
             </h1>
 
             <p>
-              Connecté en tant que{" "}
+              ConnectÃ© en tant que{" "}
 
               <strong>
                 {
@@ -1751,7 +1749,7 @@ function App() {
               handleLogout
             }
           >
-            Déconnexion
+            DÃ©connexion
           </button>
 
         </header>
@@ -1771,11 +1769,11 @@ function App() {
         <section className="chat-panel">
 
           <h2>
-            Conversation sécurisée
+            Conversation sÃ©curisÃ©e
           </h2>
 
           <p>
-            Sélectionne un utilisateur pour ouvrir
+            SÃ©lectionne un utilisateur pour ouvrir
             ou retrouver automatiquement sa conversation.
           </p>
 
@@ -1801,7 +1799,7 @@ function App() {
             >
 
               <option value="">
-                Sélectionner un utilisateur
+                SÃ©lectionner un utilisateur
               </option>
 
 
@@ -1839,7 +1837,7 @@ function App() {
                 !selectedUserId
               }
             >
-              Ouvrir la conversation sécurisée
+              Ouvrir la conversation sÃ©curisÃ©e
             </button>
 
           ) : (
@@ -1882,8 +1880,8 @@ function App() {
                 </h2>
 
                 <p>
-                  Les messages sont chiffrés
-                  côté navigateur.
+                  Les messages sont chiffrÃ©s
+                  cÃ´tÃ© navigateur.
                 </p>
 
               </div>
@@ -1955,7 +1953,7 @@ function App() {
                   event.target.value
                 )
               }
-              placeholder="Écrire un message..."
+              placeholder="Ã‰crire un message..."
             />
 
 
